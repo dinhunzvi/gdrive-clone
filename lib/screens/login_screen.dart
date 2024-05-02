@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gdrive_clone/controllers/authentication_controller.dart';
 import 'package:gdrive_clone/utils.dart';
+import 'package:get/instance_manager.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  AuthenticationController authenticationController =
+    Get.put(AuthenticationController());
 
   @override
   Widget build(BuildContext context) {
@@ -65,17 +70,20 @@ class LoginScreen extends StatelessWidget {
                       style: textStyle(20, textColor, FontWeight.w600),
                     ),
                     const SizedBox(height: 30,),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.7,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrangeAccent.withOpacity(0.8)
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Let's go",
-                          style: textStyle(23, Colors.white, FontWeight.w700),),
+                    InkWell(
+                      onTap: () => authenticationController.login(),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width / 1.7,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.deepOrangeAccent.withOpacity(0.8)
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Let's go",
+                            style: textStyle(23, Colors.white, FontWeight.w700),),
+                        ),
                       ),
                     )
                   ],
