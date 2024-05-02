@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gdrive_clone/controllers/navigation_controller.dart';
 import 'package:gdrive_clone/utils.dart';
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 
 class Header extends StatelessWidget {
+  NavigationController navigationController = Get.put(NavigationController());
   Widget tabCell(String text, bool selected, BuildContext context) {
     return selected ? Padding(
       padding: const EdgeInsets.all(5.0),
@@ -26,7 +30,7 @@ class Header extends StatelessWidget {
         ),
         child: Center(child: Text(text, style: textStyle(23, Colors.white, FontWeight.bold),)),
       ),
-    ) : Container(
+    ) : SizedBox(
       width: MediaQuery.of(context).size.width * 0.45 - 10,
       height: 60,
       child: Center(
@@ -67,11 +71,25 @@ class Header extends StatelessWidget {
                 )
               ]
             ),
-            child: Row(
-              children: [
-                tabCell("Storage", true,  context),
-                tabCell("Files", false, context),
-              ],
+            child: Obx(
+              ()=> Row(
+                children: [
+                  InkWell(
+                    onTap: ()=> navigationController.changeTab("Storage"),
+                    child: tabCell(
+                        "Storage",
+                        navigationController.tab.value == "Storage" ? true : false,
+                        context),
+                  ),
+                  InkWell(
+                    onTap: ()=> navigationController.changeTab("Files"),
+                    child: tabCell(
+                        "Files",
+                        navigationController.tab.value == "Files" ? true : false,
+                        context),
+                  ),
+                ],
+              ),
             ),
           )
         ],
