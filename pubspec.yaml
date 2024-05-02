@@ -28,6 +28,28 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  google_fonts:
+  eva_icons_flutter:
+  get: ^4.6.6
+  google_sign_in:
+  firebase_auth:
+  cloud_firestore:
+  firebase_core:
+  firebase_storage:
+  file_picker:
+  mime:
+  path_provider:
+  uuid:
+  flutter_image_compress:
+  flutter_ffmpeg:
+  video_compress:
+  url_launcher:
+  audioplayers:
+  chewie:
+  video_player:
+  flutter_downloader: ^1.7.1
+  permission_handler:
+
   flutter:
     sdk: flutter
 
