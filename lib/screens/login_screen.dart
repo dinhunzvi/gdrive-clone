@@ -4,10 +4,6 @@ import 'package:gdrive_clone/utils.dart';
 import 'package:get/instance_manager.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-
-  AuthenticationController authenticationController =
-    Get.put(AuthenticationController());
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 30,),
                     InkWell(
-                      onTap: () => authenticationController.login(),
+                      onTap: () => Get.find<AuthenticationController>().login(),
                       child: Container(
                         width: MediaQuery.of(context).size.width / 1.7,
                         height: 50,

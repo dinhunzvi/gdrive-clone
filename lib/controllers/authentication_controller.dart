@@ -6,12 +6,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthenticationController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   GoogleSignIn googleSignIn = GoogleSignIn();
+  Rx<User?> user = Rx<User?>(FirebaseAuth.instance.currentUser);
 
   @override
   void onInit() {
-    // TODO: implement onInit
-
     super.onInit();
+
+    user.bindStream(auth.authStateChanges());
+
   }
 
   login()  async {
