@@ -21,15 +21,9 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
@@ -74,4 +68,22 @@ class DefaultFirebaseOptions {
     storageBucket: 'drive-clone-d79d9.appspot.com',
     measurementId: 'G-VTWJP627EZ',
   );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyATnAbaZu0TaGb0nhlXkkaZl1QlinKrRIE',
+    appId: '1:741229657315:ios:678c33f593134e516819d6',
+    messagingSenderId: '741229657315',
+    projectId: 'drive-clone-d79d9',
+    storageBucket: 'drive-clone-d79d9.appspot.com',
+    iosBundleId: 'com.example.gdriveClone',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCQZhUgCq5yy58v1PW5hsNIbVjkvnKxeY8',
+    appId: '1:741229657315:android:6e22d79dccf8d12f6819d6',
+    messagingSenderId: '741229657315',
+    projectId: 'drive-clone-d79d9',
+    storageBucket: 'drive-clone-d79d9.appspot.com',
+  );
+
 }
