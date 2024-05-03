@@ -68,4 +68,7 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    // Add this in addition to your other dependencies
+    implementation "androidx.activity:activity:1.9.0"
+}
