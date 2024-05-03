@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gdrive_clone/controllers/files_screen_controller.dart';
+import 'package:gdrive_clone/firebase.dart';
 import 'package:gdrive_clone/screens/nav_screen.dart';
 import 'package:gdrive_clone/utils.dart';
 import 'package:get/get.dart';
@@ -105,6 +106,7 @@ class FilesScreen extends StatelessWidget {
                                   ),
                                 ),
                                 InkWell(
+                                  onTap: ()=> FirebaseService().uploadFile('folderName'),
                                   child: Row(
                                     children: [
                                       Text(

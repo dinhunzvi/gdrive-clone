@@ -36,7 +36,7 @@ dependencies:
   cloud_firestore:
   firebase_core:
   firebase_storage:
-  file_picker:
+  file_picker: ^8.0.3
   mime:
   path_provider:
   uuid:
