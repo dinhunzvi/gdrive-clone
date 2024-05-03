@@ -1,11 +1,17 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gdrive_clone/controllers/files_screen_controller.dart';
+import 'package:gdrive_clone/screens/nav_screen.dart';
 import 'package:gdrive_clone/utils.dart';
 import 'package:get/get.dart';
 import '../widgets/folders_section.dart';
 import '../widgets/recent_files.dart';
 
 class FilesScreen extends StatelessWidget {
+  TextEditingController folderController = TextEditingController();
+
+  FilesScreenController filesScreenController = Get.put(FilesScreenController());
 
   openAddFolderDialog(BuildContext context) {
     return showDialog(
@@ -19,6 +25,7 @@ class FilesScreen extends StatelessWidget {
             ),
             content: TextFormField(
               autofocus: true,
+              controller: folderController,
               style: textStyle(17, Colors.black, FontWeight.w600),
               decoration: InputDecoration(
                 filled: true,
@@ -34,6 +41,13 @@ class FilesScreen extends StatelessWidget {
                     'Cancel',
                     style: textStyle(16, textColor, FontWeight.bold),)),
               InkWell(
+                onTap: () {
+                  userCollection.doc(FirebaseAuth.instance.currentUser!.uid).collection('folders').add({
+                    "name": folderController.text,
+                    "time": DateTime.now()
+                  });
+                  Get.offAll(const NavScreen());
+                },
                   child: Text(
                     'Create',
                     style: textStyle(16, textColor, FontWeight.bold),)),
